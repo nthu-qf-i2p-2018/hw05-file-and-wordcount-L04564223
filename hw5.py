@@ -6,7 +6,7 @@ import csv
 
 def main(filename):
     # read file into lines
-    lines = open('F:\Files\台湾\学术 我要学术\Python\homework\i_have_a_dream.txt').readlines()
+    lines = open('i_have_a_dream.txt').readlines()
 
     # declare a word list
     all_words = []
