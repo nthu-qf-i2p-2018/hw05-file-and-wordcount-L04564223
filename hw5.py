@@ -37,7 +37,7 @@ def main(filename):
     # a,12345
     # I,23456
     # ...
-    with open('counter.csv','w',newline='') as csv_file:
+    with open('wordcount.csv','w',newline='') as csv_file:
         # create a csv writer from a file object (or descriptor)
         writer = csv.writer(csv_file)
         # write table head
@@ -48,10 +48,10 @@ def main(filename):
             writer.writerow([word, count])
 
     # dump to a json file named "wordcount.json"
-    json.dump(wordcount,open('counter.json','w'))
+    json.dump(wordcount,open('wordcount.json','w'))
 
     # BONUS: dump to a pickle file named "wordcount.pkl"
-    pickle.dump(wordcount.most_common,open('counter.pickle','wb'))
+    pickle.dump(wordcount.most_common,open('wordcount.pickle','wb'))
     # hint: dump the Counter object directly
 
 
