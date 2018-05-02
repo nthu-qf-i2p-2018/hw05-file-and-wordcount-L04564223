@@ -4,6 +4,7 @@ import pickle
 import string
 import csv
 
+
 def main(filename):
     # read file into lines
     lines = open(filename).readlines()
@@ -30,30 +31,31 @@ def main(filename):
 
     # compute word count from all_words
     from collections import Counter
-    wordcount = Counter(all_words)
+    count = Counter(all_words)
+    wordcount = count.most_common()
 
     # dump to a csv file named "wordcount.csv":
     # word,count
     # a,12345
     # I,23456
     # ...
-    with open('wordcount.csv','w',newline='') as csv_file:
+    with open('wordcount.csv', 'w', newline='') as csv_file:
         # create a csv writer from a file object (or descriptor)
         writer = csv.writer(csv_file)
         # write table head
         writer.writerow(['word', 'count'])
         # write all (word, count) pair into the csv writer
-        new_wordcount=dict(wordcount)
-        for word,count in new_wordcount.items():
+        for word, count in wordcount:
             writer.writerow([word, count])
 
     # dump to a json file named "wordcount.json"
-    json.dump(wordcount,open('wordcount.json','w'))
+    json.dump(wordcount, open('wordcount.json', 'w'))
 
     # BONUS: dump to a pickle file named "wordcount.pkl"
-    pickle.dump(wordcount.most_common,open('wordcount.pickle','wb'))
+    wordcount = Counter(all_words)
+    pickle.dump(wordcount, open('wordcount.pickle', 'wb'))
     # hint: dump the Counter object directly
 
 
 if __name__ == '__main__':
-    main("i_have_a_dream.txt")
+    main("F:\Files\台湾\学术 我要学术\Python\homework\i_have_a_dream.txt")
